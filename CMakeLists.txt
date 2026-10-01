@@ -84,6 +84,7 @@ endmacro()
 
 # dependencies
 find_package(spdlog CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 find_dependency_path(DKUtil include/DKUtil/Logger.hpp)
 
 # cmake target
@@ -112,6 +113,7 @@ target_link_libraries(
 	PRIVATE
 		DKUtil::DKUtil
 		spdlog::spdlog
+		SDL2::SDL2
 )
 
 # compiler def
@@ -161,3 +163,11 @@ set_property(
 	${PROJECT_NAME}
 	PROPERTY VS_USER_PROPS
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_stl_modules.props")
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(MouseLookToggleTests tests/MouseLookToggleTests.cpp)
+    target_include_directories(MouseLookToggleTests PRIVATE src)
+    target_link_libraries(MouseLookToggleTests PRIVATE SDL2::SDL2)
+    add_test(NAME MouseLookToggle COMMAND MouseLookToggleTests)
+endif()

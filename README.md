@@ -28,6 +28,20 @@ The mod has two parts and you need both of them.
 The folders under `script-extender/Data/Mods/` are nested pretty deep, but that's just how BG3
 wants them inside a .pak.
 
+## Mouse-look toggle
+
+In MCM, open **True Third-Person Camera > Global Settings > Mouse** and change
+**Middle Mouse Look Toggle**. It is enabled by default and reloads without restarting.
+Keep the game's Camera Rotate binding on middle mouse.
+
+Click middle mouse once to keep mouse look active after releasing the button.
+Click again to restore the cursor. Escape, focus loss, minimizing the game, or
+controller input releases mouse look. Toggle back to the cursor before using menus.
+Turning the setting off restores normal hold-to-look behavior.
+
+Install both the updated DLL and companion `.pak` to see this checkbox.
+The toggle supports WASD's first-event hook without replacing its cursor behavior.
+
 ## Building
 
 Visual Studio 2022 with C++ support, CMake 3.21+, and vcpkg with `VCPKG_ROOT` set.
@@ -35,6 +49,7 @@ Visual Studio 2022 with C++ support, CMake 3.21+, and vcpkg with `VCPKG_ROOT` se
 ```powershell
 cmake --preset REL -B build
 cmake --build build --config Release
+ctest --test-dir build -C Release --output-on-failure
 ```
 
 The DLL lands in `build/Release/`. Copy it into `Baldurs Gate 3/bin/NativeMods/`.
@@ -44,10 +59,12 @@ The DLL lands in `build/Release/`. Copy it into `Baldurs Gate 3/bin/NativeMods/`
 divine.exe comes from [LSLib](https://github.com/Norbyte/lslib):
 
 ```powershell
-divine.exe --action create-package --source script-extender\Data --destination TrueThirdPersonCamera.pak --game bg3
+./pack.ps1 -DivinePath 'C:/path/to/ExportTool/tools/Divine.exe'
 ```
 
-Install the .pak with BG3 Mod Manager afterwards. The DLL alone won't do anything on its own.
+The script writes `dist/TrueThirdPersonCamera.pak`, extracts it again, and compares
+every packaged file with its source. Install it with your mod manager as an update
+to the existing companion mod. The DLL alone won't do anything on its own.
 
 ## Licence
 

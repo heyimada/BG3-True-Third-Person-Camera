@@ -7,6 +7,7 @@ namespace Settings
 	{
 	public:
 		bool InvertPitch = false;
+		bool MouseLookToggle = true;
 		bool UnlockedPitchLimitClipping = true;
 		bool ZoomToggleImmersiveMode = true;
 		float ZoomToggleCharacterSwitchTransitionDuration = 0.7f;

@@ -67,6 +67,13 @@
           "SectionName": "Mouse",
           "Settings": [
             {
+              "Id": "MouseLookToggle",
+              "Name": "Middle Mouse Look Toggle",
+              "Type": "checkbox",
+              "Default": true,
+              "Tooltip": "Click middle mouse once to keep looking around without holding it. Click again to restore the cursor. Escape, switching to a controller, or leaving the game window releases mouse look. Keep the game's Camera Rotate binding on middle mouse."
+            },
+            {
               "Id": "MouseCameraRotationMult",
               "Name": "Mouse Look Sensitivity",
               "Type": "slider_float",

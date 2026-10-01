@@ -1,4 +1,5 @@
 #include "Hooks/Hooks.h"
+#include "Hooks/MouseLookHook.h"
 
 namespace Hooks
 {
@@ -6,5 +7,6 @@ namespace Hooks
 	{
 		Offsets::Init();
 		HookManager::Hook();
+		MouseLook::Install();
 	}
 }

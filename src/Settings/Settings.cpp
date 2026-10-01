@@ -174,6 +174,7 @@ namespace Settings
 				ApplyIfPresent(global, "ZoomToggleCharacterSwitchTransitionDuration", ZoomToggleCharacterSwitchTransitionDuration);
 
 				const auto& mouseSection = root["global_settings"]["mouse_settings"];
+				ApplyIfPresent(mouseSection, "MouseLookToggle", MouseLookToggle);
 				ApplyIfPresent(mouseSection, "MouseCameraRotationMult", MouseCameraRotationMult);
 				ApplyIfPresent(mouseSection, "MousePitchMult", MousePitchMult);
 				ApplyIfPresent(mouseSection, "MouseZoomMult", MouseZoomMult);
