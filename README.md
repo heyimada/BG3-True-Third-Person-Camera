@@ -49,7 +49,6 @@ Visual Studio 2022 with C++ support, CMake 3.21+, and vcpkg with `VCPKG_ROOT` se
 ```powershell
 cmake --preset REL -B build
 cmake --build build --config Release
-ctest --test-dir build -C Release --output-on-failure
 ```
 
 The DLL lands in `build/Release/`. Copy it into `Baldurs Gate 3/bin/NativeMods/`.
@@ -59,12 +58,10 @@ The DLL lands in `build/Release/`. Copy it into `Baldurs Gate 3/bin/NativeMods/`
 divine.exe comes from [LSLib](https://github.com/Norbyte/lslib):
 
 ```powershell
-./pack.ps1 -DivinePath 'C:/path/to/ExportTool/tools/Divine.exe'
+divine.exe --action create-package --source script-extender\Data --destination TrueThirdPersonCamera.pak --game bg3
 ```
 
-The script writes `dist/TrueThirdPersonCamera.pak`, extracts it again, and compares
-every packaged file with its source. Install it with your mod manager as an update
-to the existing companion mod. The DLL alone won't do anything on its own.
+Install the .pak with BG3 Mod Manager afterwards. The DLL alone won't do anything on its own.
 
 ## Licence
 
